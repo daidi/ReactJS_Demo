@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/JSXTransformer.js"></script>
+</head>
+<body>
+	<div id="mount-point"></div>
+	<script type="text/jsx">
+		/** @jsx React.DOM */		
+		var MyComponent = React.createClass({
+			incrementCount: function(){
+				this.setState({
+					count: this.state.count + 1
+				});
+			},
+
+			getInitialState: function(){
+				return {
+					count: 5
+				}
+			},
+
+			render: function(){
+				return (
+					<div id="counter">
+						<h1>Hello, world! Your count is: {this.state.count} </h1>
+						<button type="button" onClick={this.incrementCount}>Increment</button>
+					</div>
+					);
+			}
+		});
+
+		React.renderComponent(
+			<MyComponent />,
+			document.getElementById('mount-point')
+		);
+	</script>
+</body>
+</html>
